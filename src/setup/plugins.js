@@ -4,6 +4,7 @@ import Vue from 'vue';
 // import PortalVue from 'portal-vue';
 import VueAxios from '@/plugins/axios';
 import VueBemCn from '@/plugins/vue-bem-cn';
+import fullPageScroll from '@/plugins/full-page-scroll';
 // import resizeEnd from '@/plugins/resize-end';
 // import eventBus from '@/plugins/event-bus';
 // import viewport from '@/plugins/viewport';
@@ -27,3 +28,4 @@ Vue.use(VueBemCn, {
 // Vue.use(VModal);
 // Vue.use(dayjs);
 Vue.use(VueFullPage);
+Vue.use(fullPageScroll);

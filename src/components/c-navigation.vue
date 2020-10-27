@@ -1,24 +1,15 @@
 <template>
   <nav :class="b()">
     <ul :class="b('list')">
-      <li :class="b('list-item')">
-        <a :class="b('link')" href="#1">
-          <e-icon icon="home" inline />
-        </a>
-      </li>
-      <li :class="b('list-item')">
-        <a :class="b('link')" href="#2">
-          <e-icon icon="home" inline />
-        </a>
-      </li>
-      <li :class="b('list-item')">
-        <a :class="b('link')" href="#3">
-          <e-icon icon="home" inline />
-        </a>
-      </li>
-      <li :class="b('list-item')">
-        <a :class="b('link')" href="#4">
-          <e-icon icon="home" inline />
+      <li v-for="(item, index) in $store.getters.getNavigationItems"
+          :key="item.id"
+          :class="b('list-item')">
+        <a :class="b('link', { active: activeId === index })"
+           :title="item.title"
+           href="#"
+           @click.prevent="onClickLink(index + 1)">
+          <span class="invisible">{{ item.title }}</span>
+          <e-icon :icon="item.icon" inline />
         </a>
       </li>
     </ul>
@@ -32,12 +23,20 @@ export default {
   // mixins: [],
 
   // props: {},
-  // data() {
-  //   return {};
-  // },
+  data() {
+    return {
+      activeId: 0,
+    };
+  },
 
   // computed: {},
-  // watch: {},
+  watch: {
+    '$fullPageScroll.homeIndex': {
+      handler(index) {
+        this.activeId = index;
+      },
+    },
+  },
 
   // beforeCreate() {},
   // created() {},
@@ -50,7 +49,15 @@ export default {
   // beforeDestroy() {},
   // destroyed() {},
 
-  // methods: {},
+  methods: {
+    onClickLink(id) {
+      const { home } = this.$fullPageScroll;
+
+      if (home) {
+        home.api.moveTo(id);
+      }
+    },
+  },
   // render() {},
 };
 </script>
@@ -96,10 +103,12 @@ export default {
       }
     }
 
-    &__link:hover {
+    &__link:hover,
+    &__link--active {
       background-color: $color-primary--1;
-      color: $color-grayscale--0;
+    }
 
+    &__link--active {
       svg path {
         fill: $color-grayscale--0;
       }
