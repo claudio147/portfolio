@@ -66,16 +66,24 @@ export default {
   .c-navigation {
     z-index: 999;
     position: fixed;
-    right: 30px;
-    top: 50vh;
+    top: 50%;
+    right: $spacing--10;
     transform: translateY(-50%);
+
+    @include media(sm) {
+      right: $spacing--30;
+    }
 
     &__list {
       @extend %list-reset;
     }
 
     &__list-item {
-      margin-bottom: $spacing--25;
+      margin-bottom: $spacing--15;
+
+      @include media(sm) {
+        margin-bottom: $spacing--25;
+      }
     }
 
     &__list-item:last-child {
@@ -86,7 +94,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: $spacing--10;
       border: 2px solid $color-primary--1;
       background-color: $color-grayscale--0;
       border-radius: 50%;
@@ -94,8 +102,13 @@ export default {
       transition: all 200ms ease-in-out;
 
       svg {
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
+
+        @include media(sm) {
+          width: 30px;
+          height: 30px;
+        }
 
         path {
           fill: $color-grayscale--1000;
