@@ -10,6 +10,13 @@
         <component :is="item.component" />
       </section>
     </full-page>
+    <div :class="b('page-indicator')">
+      <div>
+        {{ this.$fullPageScroll.homeIndex + 1 }}
+        <span :class="b('page-total')">/ {{$store.getters.getNavigationItems.length}}</span>
+      </div>
+      <h1 :class="b('heading')">{{ activePage }}</h1>
+    </div>
   </div>
 </template>
 
@@ -39,7 +46,14 @@ export default {
     };
   },
 
-  // computed: {},
+  computed: {
+    activePage() {
+      const items = this.$store.getters.getNavigationItems;
+      const activeItem = items[this.$fullPageScroll.homeIndex];
+
+      return (activeItem && activeItem.title) || '';
+    },
+  },
   // watch: {},
 
   // beforeCreate() {},
@@ -70,5 +84,24 @@ export default {
 
 <style lang="scss">
 .l-home {
+  &__page-indicator {
+    @include font($font-size--52, 52px, $font-weight--bold);
+
+    position: fixed;
+    right: $spacing--30;
+    bottom: $spacing--30;
+    color: $color-primary--1;
+  }
+
+  &__page-total {
+    @include font($font-size--24, 52px, $font-weight--bold);
+
+    color: $color-grayscale--1000;
+  }
+
+  &__heading {
+    font-weight: $font-weight--regular;
+    //color: $color-grayscale--1000;
+  }
 }
 </style>

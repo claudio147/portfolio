@@ -66,11 +66,12 @@ export default {
   .c-navigation {
     z-index: 999;
     position: fixed;
-    top: 50%;
+    top: $spacing--50;
     right: $spacing--10;
-    transform: translateY(-50%);
 
     @include media(sm) {
+      top: 50%;
+      transform: translateY(-50%);
       right: $spacing--30;
     }
 
