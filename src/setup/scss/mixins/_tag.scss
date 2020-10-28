@@ -7,13 +7,33 @@
 ////
 
 @mixin tag($tag: 'h1', $color: $color-primary--1) {
- &::before {
+  margin-left: $spacing--20;
+
+  @include media(sm) {
+    margin-left: 0;
+  }
+
+  &::before {
    content: '<#{$tag}>';
    color: $color;
+   display: block;
+   margin-left: -$spacing--20;
+
+   @include media(sm) {
+     display: inline-block;
+     margin-left: 0;
+   }
  }
 
   &::after {
     content: '</#{$tag}>';
     color: $color;
+    display: block;
+    margin-left: -$spacing--20;
+
+    @include media(sm) {
+      display: inline-block;
+      margin-left: 0;
+    }
   }
 }

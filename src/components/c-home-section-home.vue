@@ -1,9 +1,11 @@
 <template>
   <div :class="b()">
-    <div :class="b('main')">
+    <div :class="b('block', { left: true })">
       <h1 :class="b('title')">
         Hello World!
       </h1>
+    </div>
+    <div :class="b('block', { right: true })">
       <h3 :class="b('intro-text')">
         Mich faszinieren Werte wie Design, Ästhetik und die Reduktion aufs wesentliche.
         In Bezug auf Architektur, Möbel, Kunst genauso wie im Bezug auf Web- und Printdesign.
@@ -46,30 +48,64 @@ export default {
   .c-home-section-home {
     width: 100vw;
     height: 100vh;
-    padding-right: 120px;
+    padding-right: 60px;
+    padding-left: $spacing--15;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     background-color: $color-secondary--1;
     color: $color-font;
 
-    &__main {
+    @include media(sm) {
+      padding-right: 120px;
+      padding-left: $spacing--50;
+    }
+
+    &__block {
       display: flex;
-      align-items: flex-start;
+      margin-bottom: 120px;
+
+      @include media(lg) {
+        padding-left: $spacing--100;
+        padding-right: $spacing--100;
+      }
+
+      @include media(xl) {
+        padding-left: $spacing--200;
+        padding-right: $spacing--200;
+      }
+    }
+
+    &__block--left {
+      justify-content: flex-start;
+    }
+
+    &__block--right {
+      justify-content: flex-end;
     }
 
     &__title {
-      @include font($font-size--52);
+      @include font($font-size--24);
       @include tag('h1');
+
+      @include media(sm) {
+        @include font($font-size--36);
+      }
+
+      @include media(md) {
+        @include font($font-size--52);
+      }
     }
 
     &__intro-text {
-      @include font($font-size--24, 30px, $font-weight--regular);
+      @include font($font-size--18, 24px, $font-weight--regular);
       @include tag('p');
 
       max-width: 600px;
-      padding-top: 200px;
-      margin-left: $spacing--50;
+
+      @include media(sm) {
+        @include font($font-size--24, 30px);
+      }
     }
   }
 </style>

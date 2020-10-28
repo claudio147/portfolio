@@ -22,9 +22,9 @@ export default {
      */
     style() {
       const isDarkMode = this.$store.getters.getColorMode === 'dark';
-      const primaryColor = isDarkMode ? '#34e4cb' : '#443594';
+      const primaryColor = isDarkMode ? '#34e4cb' : '#ff9c08';
       const secondaryColor = isDarkMode ? '#000000' : '#D6D6D6';
-      const fontColor = isDarkMode ? '#ffffff' : '#000000';
+      const fontColor = isDarkMode ? '#ffffff' : '#212121';
 
       return {
         '--theme-color-primary-1': primaryColor,

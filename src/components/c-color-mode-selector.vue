@@ -63,11 +63,15 @@ export default {
 .c-color-mode-selector {
   position: fixed;
   bottom: $spacing--30;
-  left: $spacing--30;
+  left: $spacing--15;
   z-index: 999;
 
+  @include media(sm) {
+    left: $spacing--30;
+  }
+
   &__button {
-    @include font($font-size--18);
+    @include font($font-size--16);
     @extend %button-reset;
 
     cursor: pointer;
