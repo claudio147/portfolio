@@ -1,6 +1,6 @@
 <template>
   <div :class="b()">
-    ME
+    <img :class="b('image')" src="../assets/claudio-portrait.png" alt="Claudio Schäpper Portrait">
   </div>
 </template>
 
@@ -35,5 +35,13 @@ export default {
 </script>
 
 <style lang="scss">
-  .c-home-section-me {}
+  .c-home-section-me {
+    @extend %home-layout;
+
+    &__image {
+      position: absolute;
+      bottom: 0;
+      max-height: 80vh;
+    }
+  }
 </style>

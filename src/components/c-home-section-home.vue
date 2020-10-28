@@ -7,8 +7,11 @@
     </div>
     <div :class="b('block', { right: true })">
       <h3 :class="b('intro-text')">
-        Mich faszinieren Werte wie Design, Ästhetik und die Reduktion aufs wesentliche.
-        In Bezug auf Architektur, Möbel, Kunst genauso wie im Bezug auf Web- und Printdesign.
+        Ich bin <b>Frontend Entwickler</b> mit Leidenschaft.
+        Mein Fokus liegt darauf mittels sauberem Code, aktuellen Technologien,
+        einem Auge fürs Design und ohne den User aus den Augen zu verlieren
+        die besten Applikationen zu entwickeln.
+        <br> — Claudio S.
       </h3>
     </div>
   </div>
@@ -46,20 +49,11 @@ export default {
 
 <style lang="scss">
   .c-home-section-home {
-    width: 100vw;
-    height: 100vh;
-    padding-right: 60px;
-    padding-left: $spacing--15;
+    @extend %home-layout;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: $color-secondary--1;
-    color: $color-font;
-
-    @include media(sm) {
-      padding-right: 120px;
-      padding-left: $spacing--50;
-    }
 
     &__block {
       display: flex;

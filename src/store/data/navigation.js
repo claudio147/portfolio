@@ -7,19 +7,19 @@ export default [
   },
   {
     id: 'me',
-    icon: 'home',
+    icon: 'user',
     title: 'About me',
     component: 'c-home-section-me',
   },
   {
     id: 'work',
-    icon: 'home',
+    icon: 'development',
     title: 'Work',
     component: 'c-home-section-work',
   },
   {
     id: 'contact',
-    icon: 'home',
+    icon: 'contact',
     title: 'Contact',
     component: 'c-home-section-contact',
   },

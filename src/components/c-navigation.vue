@@ -111,7 +111,9 @@ export default {
           height: 30px;
         }
 
-        path {
+        path,
+        rect,
+        polygon {
           fill: $color-grayscale--1000;
         }
       }
@@ -123,7 +125,9 @@ export default {
     }
 
     &__link--active {
-      svg path {
+      svg path,
+      svg rect,
+      svg polygon {
         fill: $color-grayscale--0;
       }
     }

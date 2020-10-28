@@ -53,3 +53,7 @@ p { // TODO: update definition for project.
 [inline-template] { // Hides inline templates from flashing before rendering
   display: none;
 }
+
+b {
+  color: $color-primary--1;
+}
