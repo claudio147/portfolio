@@ -96,12 +96,12 @@ export default {
   &__page-total {
     @include font($font-size--24, 52px, $font-weight--bold);
 
-    color: $color-grayscale--1000;
+    color: $color-font;
   }
 
   &__heading {
     font-weight: $font-weight--regular;
-    //color: $color-grayscale--1000;
+    margin: 0;
   }
 }
 </style>

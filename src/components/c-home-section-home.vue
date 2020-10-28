@@ -50,6 +50,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: $color-secondary--1;
+    color: $color-font;
 
     &__main {
       display: flex;

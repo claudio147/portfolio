@@ -14,7 +14,8 @@ $color-gradient--1-0: $color-grayscale--0;
 $color-gradient--1-1: $color-grayscale--1000;
 
 // CSS Variables
-$color-primary--1: #34e4cb;
+//$color-primary--1: #34e4cb;
+$color-primary--1: var(--theme-color-primary-1);
 $color-primary--1--rgb: var(--theme-color-primary-1--rgb);
 $color-primary--2: var(--theme-color-primary-2);
 $color-primary--2--rgb: var(--theme-color-primary-2--rgb);
@@ -22,6 +23,8 @@ $color-primary--3: var(--theme-color-primary-3);
 $color-primary--3--rgb: var(--theme-color-primary-3--rgb);
 
 $color-secondary--1: var(--theme-color-secondary-1);
+$color-font: var(--theme-color-font);
+
 $color-secondary--1--rgb: var(--theme-color-secondary-1--rgb);
 $color-secondary--2: var(--theme-color-secondary-2);
 $color-secondary--2--rgb: var(--theme-color-secondary-2--rgb);
