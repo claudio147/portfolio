@@ -5,6 +5,7 @@
   padding-right: 60px;
   padding-left: $spacing--15;
   background-color: $color-secondary--1;
+  color: $color-font;
 
   @include media(sm) {
     padding-right: 120px;
