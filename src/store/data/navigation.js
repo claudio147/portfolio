@@ -2,7 +2,7 @@ export default [
   {
     id: 'home',
     icon: 'home',
-    title: 'Homepage',
+    title: 'Start',
     component: 'c-home-section-home',
   },
   {

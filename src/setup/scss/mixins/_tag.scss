@@ -1,0 +1,19 @@
+////
+// Adds a visible tag around the block.
+//
+// @param  {String} tag name
+// @param  {String} color variable
+//
+////
+
+@mixin tag($tag: 'h1', $color: $color-primary--1) {
+ &::before {
+   content: '<#{$tag}>';
+   color: $color;
+ }
+
+  &::after {
+    content: '</#{$tag}>';
+    color: $color;
+  }
+}
