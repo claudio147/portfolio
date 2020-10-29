@@ -6,9 +6,9 @@ export default [
     component: 'c-home-section-home',
   },
   {
-    id: 'me',
+    id: 'facts',
     icon: 'user',
-    title: 'About me',
+    title: 'Facts',
     component: 'c-home-section-me',
   },
   {
