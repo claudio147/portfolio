@@ -1,6 +1,8 @@
 <template>
   <div :class="b()">
-    <img :class="b('image')" src="../assets/claudio-portrait.png" alt="Claudio Schäpper Portrait">
+    <img :class="b('image', { colorMode: $store.getters.getColorMode })"
+         src="../assets/claudio-03.png"
+         alt="Claudio Schäpper Portrait">
 
     <c-circle-buzzer :items="navigationItems" active-item="skills" />
   </div>
@@ -68,6 +70,11 @@ export default {
       position: absolute;
       bottom: 0;
       max-height: 80vh;
+      filter: grayscale(20%) saturate(50%) drop-shadow(10px 10px 150px rgba(#34e4cb, 0.8));
+    }
+
+    &__image--color-mode-light {
+      filter: grayscale(70%) saturate(90%) drop-shadow(20px 20px 150px rgba(#ff9c08, 1));
     }
 
     .c-circle-buzzer {
