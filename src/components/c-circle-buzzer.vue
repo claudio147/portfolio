@@ -6,8 +6,16 @@
             type="button"
             @click="onClick(item.id)"
     >
-      <span :class="b('inner')">{{ item.label }}</span>
+      <e-icon :class="b('icon')"
+              :icon="item.icon"
+              width="30px"
+              height="30px"
+              inline />
+      <span :class="b('text')">{{ item.label }}</span>
     </button>
+    <div :class="b('active-item-mobile')">
+      {{ selectedItem.label }}
+    </div>
   </div>
 </template>
 
@@ -63,6 +71,15 @@ export default {
     computedActiveItem() {
       return this.tempActiveItem || this.activeItem;
     },
+
+    /**
+     * Gets the selected item.
+     *
+     * @returns {Object}
+     */
+    selectedItem() {
+      return this.mappedItems.find((item) => item.id === this.computedActiveItem);
+    },
   },
   // watch: {},
 
@@ -103,7 +120,14 @@ export default {
 <style lang="scss">
 .c-circle-buzzer {
   $this: &;
-  $innerSpacing: 40px;
+
+  --c-circle-buzzer-inner-spacing: 5px;
+
+  @include media(sm) {
+    --c-circle-buzzer-inner-spacing: 20px;
+  }
+
+  $innerSpacing: var(--c-circle-buzzer-inner-spacing);
 
   display: flex;
   flex-wrap: wrap;
@@ -112,6 +136,7 @@ export default {
 
   &__section-button {
     @extend %button-reset;
+    @include font($font-size--10);
 
     position: relative;
     flex: 1 0 50%;
@@ -119,7 +144,15 @@ export default {
     height: 50%;
     background-color: $color-primary--1;
     border: 1px solid transparent;
-    transition: all 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
+
+    @include media(xs) {
+      @include font($font-size--14);
+    }
+
+    @include media(sm) {
+      @include font($font-size--16);
+    }
 
     &:nth-child(1) {
       border-top-left-radius: 100%;
@@ -127,7 +160,8 @@ export default {
       border-bottom-color: $color-secondary--1;
       transform-origin: bottom right;
 
-      #{$this}__inner {
+      #{$this}__text,
+      #{$this}__icon {
         right: $innerSpacing;
         bottom: $innerSpacing;
       }
@@ -139,7 +173,8 @@ export default {
       border-bottom-color: $color-secondary--1;
       transform-origin: bottom left;
 
-      #{$this}__inner {
+      #{$this}__text,
+      #{$this}__icon  {
         left: $innerSpacing;
         bottom: $innerSpacing;
       }
@@ -151,7 +186,8 @@ export default {
       border-top-color: $color-secondary--1;
       transform-origin: top right;
 
-      #{$this}__inner {
+      #{$this}__text,
+      #{$this}__icon  {
         right: $innerSpacing;
         top: $innerSpacing;
       }
@@ -163,24 +199,63 @@ export default {
       border-top-color: $color-secondary--1;
       transform-origin: top left;
 
-      #{$this}__inner {
+      #{$this}__text,
+      #{$this}__icon  {
         left: $innerSpacing;
         top: $innerSpacing;
       }
     }
 
     &:hover {
-      transform: scale(1.05);
+      @include media(sm) {
+        transform: scale(1.05);
+      }
     }
 
+    &:focus,
     &--active,
-    &--active:hover {
+    &--active:hover,
+    &--active:focus {
       transform: scale(1.15);
+      background-color: $color-grayscale--1000;
     }
   }
 
-  &__inner {
+  &__text {
+    display: none;
+
+    @include media(sm) {
+      position: absolute;
+      display: inline-block;
+    }
+  }
+
+  &__icon#{$this}__icon {
     position: absolute;
+    margin: $spacing--10;
+
+    @include media(sm) {
+      display: none;
+    }
+
+    path {
+      fill: $color-secondary--1;
+    }
+  }
+
+  &__active-item-mobile {
+    @include font($font-size--18, 18px, $font-weight--bold);
+
+    display: block;
+    width: 100%;
+    color: $color-font;
+    text-align: center;
+    margin-top: $spacing--20;
+    text-decoration: underline;
+
+    @include media(sm) {
+      display: none;
+    }
   }
 }
 </style>

@@ -57,7 +57,11 @@ export default {
 
     &__block {
       display: flex;
-      margin-bottom: 120px;
+      margin-bottom: 50px;
+
+      @include media(sm) {
+        margin-bottom: 120px;
+      }
 
       @include media(lg) {
         padding-left: $spacing--100;

@@ -46,6 +46,7 @@ export default {
         {
           id: 'interests',
           label: 'Interessen',
+          icon: 'i-interests',
           content: [
             {
               title: 'Reisen',
@@ -55,9 +56,6 @@ export default {
             },
             {
               title: 'Squash',
-            },
-            {
-              title: 'Laufen',
             },
             {
               title: 'Wandern',
@@ -70,6 +68,7 @@ export default {
         {
           id: 'technologies',
           label: 'Technologien',
+          icon: 'i-technologies',
           content: [
             {
               title: 'Vue.js',
@@ -97,7 +96,8 @@ export default {
         },
         {
           id: 'experience',
-          label: 'Weg',
+          icon: 'i-career',
+          label: 'Karriere',
           content: [
             {
               title: 'Senior Frontend Engineer',
@@ -108,7 +108,7 @@ export default {
               subTitle: 'Horisen AG | 2016',
             },
             {
-              title: 'Planungseiter- / Hochbauzeichner',
+              title: 'Hochbauzeichner',
               subTitle: 'AF Architektur | 2015',
             },
           ],
@@ -116,6 +116,7 @@ export default {
         {
           id: 'skills',
           label: 'Skills',
+          icon: 'i-skills',
           content: [
             {
               title: 'Frontend Development',
@@ -188,8 +189,27 @@ export default {
     &__image {
       position: absolute;
       bottom: 0;
-      max-height: 80vh;
+      max-height: 30vh;
       filter: grayscale(20%) saturate(50%) drop-shadow(10px 10px 150px rgba(#34e4cb, 0.8));
+      left: 140px;
+
+      @include media(xs) {
+        max-height: 50vh;
+        left: $spacing--100;
+      }
+
+      @include media(sm) {
+        max-height: 60vh;
+        left: -150px;
+      }
+
+      @include media(md) {
+        max-height: 80vh;
+      }
+
+      @include media(lg) {
+        left: 0;
+      }
     }
 
     &__image--color-mode-light {
@@ -197,23 +217,56 @@ export default {
     }
 
     &__wrapper {
-      padding-left: 50vw;
-      padding-top: 150px;
+      padding-top: $spacing--40;
+
+      @include media(sm) {
+        padding-left: 150px;
+        padding-top: 50px;
+      }
+
+      @include media(md) {
+        padding-left: 35vw;
+        padding-top: 60px;
+      }
+
+      @include media(lg) {
+        padding-left: 50vw;
+        padding-top: 60px;
+      }
     }
 
     &__content {
-      margin-top: 100px;
+      margin-top: $spacing--50;
+
+      @include media(lg) {
+        margin-top: 100px;
+      }
     }
 
     &__list {
       @extend %list-reset;
-      @include font($font-size--24);
+      @include font($font-size--16);
       @include tag('ul');
+
+      @include media(sm) {
+        @include font($font-size--18);
+      }
+
+      @include media(md) {
+        @include font($font-size--20);
+      }
+
+      @include media(lg) {
+        @include font($font-size--24);
+      }
     }
 
     &__list-item {
       display: block;
-      padding-left: $spacing--40;
+
+      @include media(sm) {
+        padding-left: $spacing--40;
+      }
     }
 
     &__list-title,
@@ -222,11 +275,30 @@ export default {
     }
 
     &__list-subtitle {
-      @include font($font-size--16, 16px);
+      @include font($font-size--12, 12px);
 
       padding-left: $spacing--20;
       color: $color-primary--1;
       margin-bottom: $spacing--10;
+
+      @include media(sm) {
+        @include font($font-size--16, 16px);
+      }
+    }
+
+    .c-circle-buzzer {
+      width: 150px;
+      height: 150px;
+
+      @include media(xs) {
+        width: 250px;
+        height: 250px;
+      }
+
+      @include media(sm) {
+        width: 300px;
+        height: 300px;
+      }
     }
   }
 </style>
