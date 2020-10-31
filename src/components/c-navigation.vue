@@ -119,11 +119,8 @@ export default {
       }
     }
 
-    &__link:focus {
-      background-color: $color-grayscale--0;
-    }
-
     &__link:hover,
+    &__link:focus,
     &__link--active {
       background-color: $color-primary--1;
     }
