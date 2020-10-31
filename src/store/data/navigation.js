@@ -12,9 +12,9 @@ export default [
     component: 'c-home-section-me',
   },
   {
-    id: 'work',
+    id: 'preview',
     icon: 'development',
-    title: 'Work',
+    title: 'Preview',
     component: 'c-home-section-work',
   },
   {

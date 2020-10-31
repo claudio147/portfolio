@@ -3,10 +3,24 @@
     <h2 :class="b('title')">{{ project.title }}</h2>
     <div :class="b('content')">
       <div :class="b('content-left')">
-        <img :class="b('image')" :src="image" :alt="project.title">
+        <template v-if="project.url">
+          <a :class="b('image-link')" :href="project.url" :title="project.title">
+            <img :class="b('image')" :src="image" :alt="project.title">
+          </a>
+        </template>
+        <template v-else>
+          <img :class="b('image')" :src="image" :alt="project.title">
+        </template>
         <div :class="b('technologies')">
           <c-technologies :options="technologies" />
         </div>
+        <a v-if="project.url"
+           :class="b('more-button')"
+           :href="project.url"
+           :title="project.title"
+           target="_blank">
+          zum Projekt
+        </a>
       </div>
       <div :class="b('content-right')">
         <dl :class="b('description')">
@@ -118,6 +132,7 @@ export default {
   &__content {
     @include media(sm) {
       display: flex;
+      height: 100%;
     }
   }
 
@@ -150,6 +165,10 @@ export default {
     }
   }
 
+  &__image-link {
+    display: block;
+  }
+
   &__description {
     @include tag('dl');
 
@@ -166,6 +185,21 @@ export default {
 
   &__description-dd {
     padding-left: $spacing--20;
+  }
+
+  &__more-button {
+    display: block;
+    text-align: center;
+    padding: $spacing--10 $spacing--50;
+    background-color: $color-primary--1;
+    border: 1px solid transparent;
+    border-radius: 50em;
+    margin-top: $spacing--10;
+
+    @include media(sm) {
+      display: inline-block;
+      margin-top: $spacing--50;
+    }
   }
 }
 </style>

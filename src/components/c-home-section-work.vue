@@ -238,5 +238,9 @@ export default {
     &__button--previous {
       margin-right: $spacing--40;
     }
+
+    .c-project-reference {
+      height: 100%;
+    }
   }
 </style>
