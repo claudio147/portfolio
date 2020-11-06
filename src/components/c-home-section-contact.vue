@@ -90,30 +90,51 @@ export default {
     @extend %home-layout;
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
+    @include media(sm) {
+      align-items: center;
+    }
+
     &__wrapper {
-      @include tag('form');
+      margin-top: $spacing--50;
+
+      @include media(sm) {
+        @include tag('form');
+
+        margin-top: 0;
+      }
+
       @include font($font-size--36);
     }
 
     &__container {
-      @include font($font-size--18);
+      @include font($font-size--14);
 
-      padding: $spacing--50;
-      border: 1px solid $color-primary--1;
-      box-shadow: inset 0px 0px 15px 0px $color-primary--1;
       min-width: 50vw;
       min-height: 300px;
-      margin: $spacing--10 0 $spacing--10 $spacing--50;
+
+      @include media(sm) {
+        @include font($font-size--18);
+
+        padding: $spacing--50;
+        margin: $spacing--10 0 $spacing--10 $spacing--50;
+        border: 1px solid $color-primary--1;
+        box-shadow: inset 0px 0px 15px 0px $color-primary--1;
+      }
     }
 
     &__title {
-      @include font($font-size--52, 52px, $font-weight--bold);
+      @include font($font-size--36, 36px, $font-weight--bold);
 
       color: $color-primary--1;
       width: 100%;
+
+      @include media(sm) {
+        @include font($font-size--52, 52px, $font-weight--bold);
+      }
+
     }
 
     &__list {
@@ -121,13 +142,25 @@ export default {
 
       display: flex;
       flex-wrap: wrap;
-      margin-top: $spacing--100;
+      justify-content: space-between;
+      margin-top: $spacing--50;
+
+      @include media(sm) {
+        margin-top: $spacing--100;
+        justify-content: flex-start;
+      }
     }
 
     &__list-item {
-      flex: 1 0 120px;
-      max-width: 120px;
-      margin-right: $spacing--40;
+      flex: 1 0 50%;
+      max-width: 50%;
+      padding: $spacing--10 $spacing--50;
+
+      @include media(sm) {
+        flex: 1 0 120px;
+        max-width: 120px;
+        margin-right: $spacing--40;
+      }
     }
 
     &__link {
@@ -156,13 +189,26 @@ export default {
       text-align: center;
       color: $color-font;
       border-bottom: 2px solid transparent;
+      white-space: nowrap;
     }
 
     &__footer {
+      @include font($font-size--12, 12px, $font-weight--regular);
+
       position: absolute;
-      bottom: 30px;
+      bottom: 5px;
       left: 50%;
       transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
+
+      @include media(sm) {
+        @include font($font-size--18, 18px, $font-weight--regular);
+
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
 </style>
