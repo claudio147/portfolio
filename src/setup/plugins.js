@@ -10,7 +10,7 @@ import fullPageScroll from '@/plugins/full-page-scroll';
 // import viewport from '@/plugins/viewport';
 // import modal from '@/plugins/modalStack';
 // import api from '@/plugins/api';
-// import dayjs from '@/plugins/dayjs';
+import dayjs from '@/plugins/dayjs';
 import VueFullPage from 'vue-fullpage.js';
 
 // Self executing
@@ -26,6 +26,6 @@ Vue.use(VueBemCn, {
 });
 // Vue.use(PortalVue);
 // Vue.use(VModal);
-// Vue.use(dayjs);
+Vue.use(dayjs);
 Vue.use(VueFullPage);
 Vue.use(fullPageScroll);
