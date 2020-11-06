@@ -159,6 +159,7 @@ export default {
       @include media(sm) {
         flex: 1 0 120px;
         max-width: 120px;
+        padding: $spacing--20;
         margin-right: $spacing--40;
       }
     }
