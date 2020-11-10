@@ -1,8 +1,14 @@
 <template>
   <div :class="b()">
-    <div :class="b('wrapper')">
-      <div :class="b('container')">
-        <h1 :class="b('title')">Get in touch</h1>
+    <h1 :class="b('title')">Get in touch</h1>
+
+    <div ref="wrapper"
+         :class="b('wrapper')"
+         @mousemove="onWrapperMouseMove"
+         @mouseenter="onWrapperMouseEnter"
+         @mouseleave="onWrapperMouseLeave">
+      <div ref="card" :class="b('card')">
+        <img :class="b('phone-background')" src="../assets/iphone.png" alt="phone-background">
         <ul :class="b('list')">
           <li v-for="item in items" :key="item.url" :class="b('list-item')">
             <a :href="item.url"
@@ -80,7 +86,40 @@ export default {
   // beforeDestroy() {},
   // destroyed() {},
 
-  // methods: {},
+  methods: {
+    /**
+     * Animation mousemove event.
+     *
+     * @param {Object} event - MouseEvent.
+     */
+    onWrapperMouseMove(event) {
+      const { card } = this.$refs;
+
+      const xAxis = (window.innerWidth / 2 - event.pageY) / 20;
+      const yAxis = (window.innerHeight / 2 - event.pageX) / 20;
+
+      card.style.transform = `rotateY(${yAxis}deg) rotateX(${xAxis}deg)`;
+    },
+
+    /**
+     * Animation wrapper mouse leave event.
+     */
+    onWrapperMouseLeave() {
+      const { card } = this.$refs;
+
+      card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      card.style.transition = 'all 500ms ease';
+    },
+
+    /**
+     * Animation mouse enter event.
+     */
+    onWrapperMouseEnter() {
+      const { card } = this.$refs;
+
+      card.style.transition = 'none';
+    },
+  },
   // render() {},
 };
 </script>
@@ -92,36 +131,72 @@ export default {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    flex-direction: column;
+    perspective: 1000px;
 
     @include media(sm) {
       align-items: center;
     }
 
     &__wrapper {
+      @include font($font-size--36);
+
       margin-top: $spacing--50;
 
       @include media(sm) {
-        @include tag('form');
-
+        max-width: 70vw;
         margin-top: 0;
       }
 
-      @include font($font-size--36);
+      @include media(md) {
+        max-width: 65vw;
+      }
+
+      @include media(lg) {
+        max-width: 55vw;
+      }
+
+      @include media(xl) {
+        max-width: 800px;
+      }
     }
 
-    &__container {
+    &__card {
       @include font($font-size--14);
 
-      min-width: 50vw;
-      min-height: 300px;
+      position: relative;
+      max-width: 100%;
+      transform-style: preserve-3d;
+      transition: all 500ms ease;
 
       @include media(sm) {
         @include font($font-size--18);
 
-        padding: $spacing--50;
-        margin: $spacing--10 0 $spacing--10 $spacing--50;
-        border: 1px solid $color-primary--1;
-        box-shadow: inset 0px 0px 15px 0px $color-primary--1;
+        max-width: 60vw;
+        max-height: 60vw;
+        padding: $spacing--40 $spacing--10;
+        margin: $spacing--100 $spacing--100;
+      }
+
+      @include media(md) {
+        margin: $spacing--100 $spacing--200;
+      }
+    }
+
+    &__phone-background {
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-width: 100%;
+      box-shadow: 10px 10px 200px 0 $color-primary--1;
+      z-index: -1;
+      border-radius: 65px;
+
+      @include media($down:xs) {
+        display: none;
       }
     }
 
@@ -133,8 +208,9 @@ export default {
 
       @include media(sm) {
         @include font($font-size--52, 52px, $font-weight--bold);
-      }
 
+        text-align: center;
+      }
     }
 
     &__list {
@@ -142,12 +218,11 @@ export default {
 
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
       margin-top: $spacing--50;
 
       @include media(sm) {
         margin-top: $spacing--100;
-        justify-content: flex-start;
       }
     }
 
@@ -157,10 +232,7 @@ export default {
       padding: $spacing--10 $spacing--50;
 
       @include media(sm) {
-        flex: 1 0 120px;
-        max-width: 120px;
-        padding: $spacing--20;
-        margin-right: $spacing--40;
+        padding: $spacing--20 $spacing--50;
       }
     }
 
@@ -171,7 +243,7 @@ export default {
       max-width: 100%;
     }
 
-    &__link:hover &__image {
+    &__wrapper:hover &__image {
       filter: grayscale(0)
     }
 
@@ -180,8 +252,12 @@ export default {
     }
 
     &__image {
+      transition: filter 500ms ease;
       max-width: 100%;
-      filter: grayscale(95%)
+
+      @include media(sm) {
+        filter: grayscale(95%);
+      }
     }
 
     &__link-text {
