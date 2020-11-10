@@ -144,7 +144,6 @@ export default {
     height: 50%;
     background-color: $color-primary--1;
     border: 1px solid transparent;
-    transition: transform 200ms ease-in-out;
 
     @include media(xs) {
       @include font($font-size--14);
@@ -152,6 +151,8 @@ export default {
 
     @include media(sm) {
       @include font($font-size--16);
+
+      transition: transform 200ms ease-in-out;
     }
 
     &:nth-child(1) {
