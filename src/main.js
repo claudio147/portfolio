@@ -6,6 +6,7 @@ import './setup/plugins';
 import components from './setup/components';
 
 Vue.config.productionTip = false;
+Vue.config.storyblokApiKey = 'Izm13zWEAQAoODbi2hFyuQtt';
 
 Vue.use(components);
 

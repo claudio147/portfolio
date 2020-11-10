@@ -8,7 +8,7 @@
                        :active-item="activeItem"
                        @click="onClickItem"
       />
-      <div :class="b('content')">
+      <div v-if="activeObject" :class="b('content')">
         <ul :class="b('list')">
           <li v-for="(item, index) in activeObject.content"
               :key="`${item.title}${index}`"
@@ -37,113 +37,9 @@ export default {
   // mixins: [],
 
   // props: {},
-  data() {
-    return {
-      /**
-       * @type {Array.<Object>} Holds the navigation with it's content inside.
-       */
-      navigationItems: [
-        {
-          id: 'interests',
-          label: 'Interessen',
-          icon: 'i-interests',
-          content: [
-            {
-              title: 'Reisen',
-            },
-            {
-              title: 'Tauchen',
-            },
-            {
-              title: 'Squash',
-            },
-            {
-              title: 'Wandern',
-            },
-            {
-              title: 'Kochen / Essen',
-            },
-          ],
-        },
-        {
-          id: 'technologies',
-          label: 'Technologien',
-          icon: 'i-technologies',
-          content: [
-            {
-              title: 'Vue.js',
-              subTitle: 'Expert level',
-            },
-            {
-              title: 'Ember.js',
-              subTitle: 'Expert level',
-            },
-            {
-              title: 'Angular.js',
-              subTitle: 'Basic level',
-            },
-            {
-              title: 'Javascript',
-              subTitle: 'ES6',
-            },
-            {
-              title: 'CSS / SCSS',
-            },
-            {
-              title: 'HTML5',
-            },
-          ],
-        },
-        {
-          id: 'experience',
-          icon: 'i-career',
-          label: 'Karriere',
-          content: [
-            {
-              title: 'Senior Frontend Engineer',
-              subTitle: 'Valantic CEC Schweiz AG | Now',
-            },
-            {
-              title: 'Web- Praktikum',
-              subTitle: 'Horisen AG | 2016',
-            },
-            {
-              title: 'Hochbauzeichner',
-              subTitle: 'AF Architektur | 2015',
-            },
-          ],
-        },
-        {
-          id: 'skills',
-          label: 'Skills',
-          icon: 'i-skills',
-          content: [
-            {
-              title: 'Frontend Development',
-              subTitle: '~99%',
-            },
-            {
-              title: 'Project management',
-              subTitle: '~70%',
-            },
-            {
-              title: 'UI / UX',
-              subTitle: '~50%',
-            },
-            {
-              title: 'PHP / Java',
-              subTitle: '~5%',
-            },
-          ],
-        },
-      ],
-
-      /**
-       * @type {String} Holds the active navigation item.
-       */
-      activeItem: 'technologies',
-    };
-  },
+  // data() {
+  //   return {};
+  // },
 
   computed: {
     /**
@@ -152,13 +48,33 @@ export default {
      * @returns {Object}
      */
     activeObject() {
-      return this.navigationItems.find((item) => item.id === this.activeItem);
+      return this.navigationItems.find((item) => item.id === this.activeItem) || null;
+    },
+
+    /**
+     * Gets the active item id.
+     *
+     * @returns {String}
+     */
+    activeItem() {
+      return this.$store.getters.getActivePropertyNavigationItem;
+    },
+
+    /**
+     * Gets all the navigation items.
+     *
+     * @returns {Array.<Object>}
+     */
+    navigationItems() {
+      return this.$store.getters.getPropertyNavigationItems;
     },
   },
   // watch: {},
 
   // beforeCreate() {},
-  // created() {},
+  created() {
+    this.$store.dispatch('fetchPropertyNavigation');
+  },
   // beforeMount() {},
   // mounted() {},
   // beforeUpdate() {},
@@ -175,7 +91,7 @@ export default {
      * @param {String} id - The id of the selected item.
      */
     onClickItem(id) {
-      this.activeItem = id;
+      this.$store.commit('setActivePropertyNavigationItem', id);
     },
   },
   // render() {},

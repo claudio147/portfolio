@@ -12,6 +12,9 @@ import fullPageScroll from '@/plugins/full-page-scroll';
 // import api from '@/plugins/api';
 import dayjs from '@/plugins/dayjs';
 import VueFullPage from 'vue-fullpage.js';
+import StoryblokVue from 'storyblok-vue';
+
+Vue.use(StoryblokVue);
 
 // Self executing
 

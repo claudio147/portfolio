@@ -8,6 +8,9 @@
 <script>
 import cNavigation from '@/components/c-navigation';
 import cColorModeSelector from '@/components/c-color-mode-selector';
+import StoryblokClient from 'storyblok-js-client';
+
+const storyBlokToken = 'Izm13zWEAQAoODbi2hFyuQtt';
 
 export default {
   components: {
@@ -34,6 +37,16 @@ export default {
         '--theme-color-font': fontColor,
       };
     },
+  },
+
+  beforeCreate() {
+    this.$storyblok.init({
+      accessToken: storyBlokToken,
+    });
+
+    window.storyblokApi = new StoryblokClient({
+      accessToken: storyBlokToken,
+    });
   },
 };
 </script>

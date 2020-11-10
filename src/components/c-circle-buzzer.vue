@@ -13,7 +13,7 @@
               inline />
       <span :class="b('text')">{{ item.label }}</span>
     </button>
-    <div :class="b('active-item-mobile')">
+    <div v-if="selectedItem" :class="b('active-item-mobile')">
       {{ selectedItem.label }}
     </div>
   </div>
