@@ -66,8 +66,9 @@ export default {
   .c-navigation {
     z-index: 999;
     position: fixed;
-    top: $spacing--50;
-    right: $spacing--10;
+    top: 50%;
+    transform: translateY(-50%);
+    right: $spacing--5;
 
     @include media(sm) {
       top: 50%;
@@ -95,12 +96,25 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: $spacing--10;
-      border: 2px solid $color-primary--1;
+      padding: 3px;
+      border: 1px solid $color-primary--1;
       background-color: $color-grayscale--0;
       border-radius: 50%;
       color: $color-grayscale--1000;
       transition: all 200ms ease-in-out;
+
+      @include media(sm) {
+        padding: $spacing--10;
+        border-width: 2px;
+      }
+
+      .e-icon {
+        display: none;
+
+        @include media(sm) {
+          display: flex;
+        }
+      }
 
       svg {
         width: 20px;

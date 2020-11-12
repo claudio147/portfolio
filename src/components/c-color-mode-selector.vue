@@ -62,12 +62,13 @@ export default {
 <style lang="scss">
 .c-color-mode-selector {
   position: fixed;
-  bottom: $spacing--30;
-  left: $spacing--15;
+  bottom: $spacing--10;
+  left: $spacing--10;
   z-index: 999;
 
   @include media(sm) {
     left: $spacing--30;
+    bottom: $spacing--30;
   }
 
   &__button {

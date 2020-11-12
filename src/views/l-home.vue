@@ -85,24 +85,27 @@ export default {
 <style lang="scss">
 .l-home {
   &__page-indicator {
-    @include font($font-size--36, 42px, $font-weight--bold);
+    @include font($font-size--30, 36px, $font-weight--bold);
 
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
     position: fixed;
-    right: $spacing--30;
-    bottom: $spacing--30;
+    right: $spacing--10;
+    bottom: $spacing--10;
     color: $color-primary--1;
 
     @include media(sm) {
       @include font($font-size--52, 52px);
+
+      right: $spacing--30;
+      bottom: $spacing--30;
     }
   }
 
   &__page-total {
-    @include font($font-size--18, 42px, $font-weight--bold);
+    @include font($font-size--18, 36px, $font-weight--bold);
 
     color: $color-font;
 
