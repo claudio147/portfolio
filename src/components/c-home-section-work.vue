@@ -117,7 +117,7 @@ export default {
       box-shadow: 0 0 40px 2px $color-primary--1;
       margin: 0 auto;
       margin-top: 50px;
-      height: 60vh;
+      height: 65vh;
       width: 100%;
 
       @include media(sm) {

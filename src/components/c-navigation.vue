@@ -120,7 +120,6 @@ export default {
     }
 
     &__link:hover,
-    &__link:focus,
     &__link--active {
       background-color: $color-primary--1;
     }
