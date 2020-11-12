@@ -132,7 +132,6 @@ export default {
   &__content {
     @include media(sm) {
       display: flex;
-      height: 100%;
     }
   }
 
@@ -185,6 +184,7 @@ export default {
 
   &__description-dd {
     padding-left: $spacing--20;
+    margin-bottom: $spacing--30;
   }
 
   &__more-button {

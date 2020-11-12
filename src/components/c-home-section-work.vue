@@ -42,126 +42,35 @@ export default {
   // mixins: [],
 
   // props: {},
-  data() {
-    return {
-      projects: [
-        {
-          id: 'test1',
-          title: 'Test1',
-          url: '/foo',
-          image: 'https://loremflickr.com/800/600/dog',
-          description: [
-            {
-              title: 'Beschreibung',
-              content: 'foo baa',
-            },
-            {
-              title: 'Beschreibung2',
-              content: 'foo baa',
-            },
-            {
-              title: 'Beschreibung3',
-              content: 'foo baa',
-            },
-          ],
-          technologies: {
-            vue: true,
-            ember: false,
-            angular: false,
-            javascript: true,
-            html: true,
-            scss: true,
-            wordpress: false,
-            hybris: true,
-            pimcore: false,
-            spryker: false,
-          },
-        },
-        {
-          id: 'test2',
-          title: 'Test2',
-          image: '',
-          description: [
-            {
-              title: 'Beschreibung',
-              content: 'foo baa',
-            },
-            {
-              title: 'Beschreibung2',
-              content: 'foo baa',
-            },
-            {
-              title: 'Beschreibung3',
-              content: 'foo baa',
-            },
-          ],
-          technologies: {
-            vue: true,
-            ember: true,
-            angular: true,
-            javascript: true,
-            html: false,
-            scss: true,
-            wordpress: true,
-            hybris: true,
-            pimcore: false,
-            spryker: false,
-          },
-        },
-        {
-          id: 'test3',
-          title: 'Test3',
-          image: '',
-          description: [
-            {
-              title: 'Beschreibung',
-              content: 'foo baa',
-            },
-            {
-              title: 'Beschreibung2',
-              content: 'foo baa',
-            },
-            {
-              title: 'Beschreibung3',
-              content: 'foo baa',
-            },
-          ],
-          technologies: {
-            vue: true,
-            ember: false,
-            angular: true,
-            javascript: false,
-            html: true,
-            scss: true,
-            wordpress: false,
-            hybris: true,
-            pimcore: true,
-            spryker: true,
-          },
-        },
-      ],
-    };
-  },
+  // data() {
+  //   return {};
+  // },
 
-  // computed: {},
-  // watch: {},
+  computed: {
+    /**
+     * Gets the projects from the vuex state.
+     *
+     * @returns {Array.<Object>}
+     */
+    projects() {
+      return this.$store.getters.getProjects;
+    },
+  },
+  watch: {
+    /**
+     * Observes the projects and inits the swiper.
+     */
+    projects() {
+      this.$nextTick(() => this.initSwiper());
+    },
+  },
 
   // beforeCreate() {},
-  // created() {},
-  // beforeMount() {},
-  mounted() {
-    const { container, next, previous } = this.$refs;
-    const options = {
-      loop: true,
-      navigation: {
-        nextEl: next,
-        prevEl: previous,
-      },
-    };
-
-    // eslint-disable-next-line no-new
-    new Swiper(container, options);
+  created() {
+    this.$store.dispatch('fetchProjects');
   },
+  // beforeMount() {},
+  // mounted() {},
   // beforeUpdate() {},
   // updated() {},
   // activated() {},
@@ -169,7 +78,24 @@ export default {
   // beforeDestroy() {},
   // destroyed() {},
 
-  // methods: {},
+  methods: {
+    /**
+     * Init swiper function.
+     */
+    initSwiper() {
+      const { container, next, previous } = this.$refs;
+      const options = {
+        loop: true,
+        navigation: {
+          nextEl: next,
+          prevEl: previous,
+        },
+      };
+
+      // eslint-disable-next-line no-new
+      new Swiper(container, options);
+    },
+  },
   // render() {},
 };
 </script>
