@@ -95,8 +95,8 @@ export default {
     onWrapperMouseMove(event) {
       const { card } = this.$refs;
 
-      const xAxis = (window.innerWidth / 2 - event.pageY) / 20;
-      const yAxis = (window.innerHeight / 2 - event.pageX) / 20;
+      const xAxis = (window.innerWidth / 2 - event.pageY) / 40;
+      const yAxis = (window.innerHeight / 2 - event.pageX) / 40;
 
       card.style.transform = `rotateY(${yAxis}deg) rotateX(${xAxis}deg)`;
     },
@@ -145,19 +145,12 @@ export default {
 
       @include media(sm) {
         max-width: 70vw;
+        max-height: 70vh;
         margin-top: 0;
       }
 
-      @include media(md) {
-        max-width: 65vw;
-      }
-
       @include media(lg) {
-        max-width: 55vw;
-      }
-
-      @include media(xl) {
-        max-width: 800px;
+        max-width: 500px;
       }
     }
 
@@ -167,6 +160,7 @@ export default {
       position: relative;
       max-width: 100%;
       transform-style: preserve-3d;
+      transform-origin: center center;
       transition: all 500ms ease;
 
       @include media(sm) {
@@ -175,11 +169,11 @@ export default {
         max-width: 60vw;
         max-height: 60vw;
         padding: $spacing--40 $spacing--10;
-        margin: $spacing--100 $spacing--100;
+        margin: $spacing--40 $spacing--80;
       }
 
       @include media(md) {
-        margin: $spacing--100 $spacing--200;
+        margin: $spacing--50 $spacing--100;
       }
     }
 
@@ -193,7 +187,7 @@ export default {
       max-width: 100%;
       box-shadow: 10px 10px 200px 0 $color-primary--1;
       z-index: -1;
-      border-radius: 65px;
+      border-radius: 50px;
 
       @include media($down:xs) {
         display: none;
@@ -248,7 +242,7 @@ export default {
     }
 
     &__link:hover &__link-text {
-      border-bottom: 2px solid $color-primary--1;
+      border-bottom: 2px solid $color-grayscale--1000;
     }
 
     &__image {
@@ -264,7 +258,7 @@ export default {
       display: block;
       margin-top: $spacing--10;
       text-align: center;
-      color: $color-font;
+      color: $color-grayscale--1000;
       border-bottom: 2px solid transparent;
       white-space: nowrap;
     }

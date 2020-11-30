@@ -62,7 +62,7 @@ export default {
 <style lang="scss">
 .c-color-mode-selector {
   position: fixed;
-  bottom: $spacing--10;
+  bottom: $spacing--15;
   left: $spacing--10;
   z-index: 999;
 

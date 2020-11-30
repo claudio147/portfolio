@@ -158,10 +158,10 @@ export default {
     margin-bottom: $spacing--10;
 
     @include media(sm) {
-      flex: 1 0 70px;
-      max-width: 70px;
-      margin-right: $spacing--20;
-      margin-bottom: $spacing--20;
+      flex: 1 0 50px;
+      max-width: 50px;
+      margin-right: $spacing--15;
+      margin-bottom: $spacing--15;
     }
   }
 

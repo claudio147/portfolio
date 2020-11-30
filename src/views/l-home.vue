@@ -93,7 +93,7 @@ export default {
     align-items: flex-end;
     position: fixed;
     right: $spacing--10;
-    bottom: $spacing--10;
+    bottom: $spacing--15;
     color: $color-primary--1;
 
     @include media(sm) {

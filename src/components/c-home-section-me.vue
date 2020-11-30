@@ -129,7 +129,7 @@ export default {
     }
 
     &__image--color-mode-light {
-      filter: grayscale(70%) saturate(90%) drop-shadow(20px 20px 150px rgba(#ff9c08, 1));
+      filter: grayscale(10%) saturate(90%) drop-shadow(20px 20px 150px $color-primary--1--rgb);
     }
 
     &__wrapper {

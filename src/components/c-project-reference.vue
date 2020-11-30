@@ -161,6 +161,7 @@ export default {
 
     @include media(sm) {
       margin-bottom: $spacing--50;
+      max-height: 300px;
     }
   }
 
@@ -198,7 +199,7 @@ export default {
 
     @include media(sm) {
       display: inline-block;
-      margin-top: $spacing--50;
+      margin-top: $spacing--30;
     }
   }
 }

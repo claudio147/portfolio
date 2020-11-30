@@ -25,14 +25,16 @@ export default {
      */
     style() {
       const isDarkMode = this.$store.getters.getColorMode === 'dark';
-      const primaryColor = isDarkMode ? '#34e4cb' : '#ff9c08';
-      const primaryColorRgb = isDarkMode ? 'rgba(52,228,203,1)' : 'rgba(255,156,8,1)';
+      const primaryColor = isDarkMode ? '#34e4cb' : '#131d6e';
+      const primaryColorRgb = isDarkMode ? 'rgba(52,228,203,1)' : 'rgba(19,29,110,1)';
+      const primaryColorNegative = isDarkMode ? '#000000' : '#ffffff';
       const secondaryColor = isDarkMode ? '#000000' : '#D6D6D6';
       const fontColor = isDarkMode ? '#ffffff' : '#212121';
 
       return {
         '--theme-color-primary-1': primaryColor,
         '--theme-color-primary-1-rgb': primaryColorRgb,
+        '--theme-color-primary-1-negative': primaryColorNegative,
         '--theme-color-secondary-1': secondaryColor,
         '--theme-color-font': fontColor,
       };

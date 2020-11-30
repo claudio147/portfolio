@@ -144,6 +144,7 @@ export default {
     height: 50%;
     background-color: $color-primary--1;
     border: 1px solid transparent;
+    color: $color-primary--1--negative;
 
     @include media(xs) {
       @include font($font-size--14);
@@ -219,6 +220,7 @@ export default {
     &--active:focus {
       transform: scale(1.15);
       background-color: $color-grayscale--1000;
+      color: $color-grayscale--0;
     }
   }
 

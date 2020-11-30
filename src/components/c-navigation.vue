@@ -142,7 +142,7 @@ export default {
       svg path,
       svg rect,
       svg polygon {
-        fill: $color-grayscale--0;
+        fill: $color-primary--1--negative;
       }
     }
   }
